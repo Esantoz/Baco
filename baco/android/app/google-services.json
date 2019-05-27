@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "34240657391",
+    "firebase_url": "https://baco-5a71e.firebaseio.com",
+    "project_id": "baco-5a71e",
+    "storage_bucket": "baco-5a71e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34240657391:android:f68c3448d39d6a54",
+        "android_client_info": {
+          "package_name": "Bellum.Baco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34240657391-avhgsap0m4pphi9t6uqq9f2bgjhbod68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "Bellum.Baco",
+            "certificate_hash": "5b46ba4048a26c1b236accdba55527fb2a7ff5b9"
+          }
+        },
+        {
+          "client_id": "34240657391-6952ielpbkck25cbmtpqtatkbl6453iu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIx87P_cqF6OsfyBmyM9c7JluXwwVfh88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34240657391-6952ielpbkck25cbmtpqtatkbl6453iu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
