@@ -13,8 +13,10 @@ import 'eventScreen.dart';
 const Color firstColor = Color(0xff311b92);
 const Color secondColor = Color(0xffb39ddb);
 
-ThemeData appTheme =
-    ThemeData(primaryColor: Colors.white, fontFamily: "Oxygen");
+ThemeData appTheme = ThemeData(
+    primaryColor: Colors.white,
+    fontFamily: "Oxygen"
+);
 
 const TextStyle menuItemStyle = TextStyle(color: Colors.black, fontSize: 18.0);
 const TextStyle categoriasStyle =
@@ -46,10 +48,15 @@ class HomeScreens extends StatelessWidget {
           ],
         ),
       ),
-      drawer: Drawer(
-        child: MyDrawerItems(
-          auth: auth,
-          onSignedOut: onSignedOut,
+      drawer: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.black.withOpacity(0.5),
+        ),
+        child:Drawer(
+          child: MyDrawerItems(
+            auth: auth,
+            onSignedOut: onSignedOut,
+          ),
         ),
       ),
     );
@@ -79,7 +86,7 @@ class _HomeScreenTopPartState extends State<HomeScreenTopPart> {
                 gradient: (LinearGradient(
                   colors: [
                     firstColor,
-                    secondColor,
+                    Colors.black.withOpacity(0.9),
                   ],
                 )),
               ),
@@ -443,24 +450,24 @@ class _MyButtonState extends State<MyButton> {
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
       Transform.scale(
-          scale: .7,
+          scale: .8,
           child: FloatingActionButton(
               heroTag: null,
               child: Icon(
                 Icons.share,
                 color: firstColor,
               ),
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.white.withOpacity(0.7),
               onPressed: () {})),
       Transform.scale(
-          scale: .7,
+          scale: .8,
           child: FloatingActionButton(
               heroTag: null,
               child: Icon(
                 Icons.send,
                 color: firstColor,
               ),
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.white.withOpacity(0.7),
               onPressed: () {}))
     ]);
   }

@@ -8,6 +8,8 @@ import 'package:baco/screens/notificacoes.dart';
 import 'package:baco/utils/auth.dart';
 
 
+const Color firstColor = Color(0xff311b92);
+const Color secondColor = Color(0xffb39ddb);
 
 class MyDrawerItems extends StatefulWidget{
   final BaseAuth auth;
@@ -54,15 +56,19 @@ class _MyDrawerItems extends State<MyDrawerItems>{
         ),
       ),
       decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage("images/landscape.jpg"),
-          )
+        gradient: (LinearGradient(
+          colors: [
+            firstColor,
+            Colors.black.withOpacity(0.5),
+          ],
+        )),
       ),
 
     );
 
-    final drawerItems = ListView(
+    final drawerItems = SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child:Column(
         children: <Widget>[
           drawerHeader,
           CustomItems(Icons.settings,"Configurações",()=> Navigator.of(context).push(
@@ -90,7 +96,7 @@ class _MyDrawerItems extends State<MyDrawerItems>{
             signOut();
           }),
         ]
-    );
+    ),);
     return drawerItems;
   }
 
@@ -118,10 +124,10 @@ class CustomItems extends StatelessWidget{
             height: 40.0,
             child: Row(
               children: <Widget>[
-                Icon(icon),
+                Icon(icon,color: Colors.white,),
                 Padding(
                   padding: EdgeInsets.all(8.0),
-                  child:Text(text,style: TextStyle(fontSize: 16.0),),
+                  child:Text(text,style: TextStyle(fontSize: 16.0,color: Colors.white),),
                 ),
               ],
             ),

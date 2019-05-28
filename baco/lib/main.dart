@@ -8,7 +8,7 @@ void main() => runApp(
     MaterialApp(
       title: "Baco",
       debugShowCheckedModeBanner: false,
-      home: HomeScreens(),
+      home: RootScreen(auth: Auth(),),
       theme: appTheme,
     )
 );

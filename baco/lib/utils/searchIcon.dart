@@ -34,7 +34,8 @@ class _SearchIconState extends State<SearchIcon> {
   final TextEditingController _filter = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {return AppBar(
+  Widget build(BuildContext context) {
+    return AppBar(
         title: Center(
             child: _appBarTitle
         ),
@@ -100,7 +101,6 @@ class _MySearchDelegate extends SearchDelegate<String>{
     );
 
 
-    return null;
   }
 
   @override
