@@ -38,19 +38,29 @@ class HomeScreens extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return Scaffold(
-      appBar: SearchIcon(),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: <Widget>[
-            HomeScreenTopPart(),
-            homeScreenBottomPart,
-          ],
-        ),
+      //appBar: SearchIcon(),
+      body: Stack(
+        children: <Widget>[
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: <Widget>[
+                HomeScreenTopPart(),
+                homeScreenBottomPart,
+              ],
+            ),
+          ),
+          Positioned(
+            top: 0.0,
+            left: 0.0,
+            right: 0.0,
+            child: SearchIcon(),
+          )
+        ],
       ),
       drawer: Theme(
         data: Theme.of(context).copyWith(
-          canvasColor: Colors.black.withOpacity(0.5),
+          canvasColor: Colors.grey.shade400.withOpacity(0.5),
         ),
         child:Drawer(
           child: MyDrawerItems(
@@ -59,6 +69,12 @@ class HomeScreens extends StatelessWidget {
           ),
         ),
       ),
+
+
+
+
+
+
     );
   }
 }

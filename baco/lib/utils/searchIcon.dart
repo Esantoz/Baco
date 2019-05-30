@@ -30,12 +30,14 @@ class _SearchIconState extends State<SearchIcon> {
 
 
   Widget _appBarTitle = Text("Baco",style: TextStyle(color: firstColor,fontWeight: FontWeight.bold),);
-  Icon _searchIcon = Icon(Icons.search);
+  Icon _searchIcon = Icon(Icons.search,);
   final TextEditingController _filter = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+        iconTheme: IconThemeData(color: firstColor),
+        backgroundColor: Colors.grey.shade400.withOpacity(0.5),
         title: Center(
             child: _appBarTitle
         ),

@@ -1,3 +1,4 @@
+import 'package:baco/screens/settingsScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class _MyDrawerItems extends State<MyDrawerItems>{
   @override
   Widget build(BuildContext context) {
     final drawerHeader = UserAccountsDrawerHeader(
-      accountName: Text("username",style: TextStyle(color: Colors.white,fontSize: 20.0),),
+      accountName: Text("username",style: TextStyle(color: firstColor,fontSize: 20.0,fontWeight: FontWeight.bold),),
       currentAccountPicture: GestureDetector(
         child: CircleAvatar(
           //backgroundImage: NetworkImage("${user.photoUrl}"),
@@ -58,8 +59,8 @@ class _MyDrawerItems extends State<MyDrawerItems>{
       decoration: BoxDecoration(
         gradient: (LinearGradient(
           colors: [
-            firstColor,
-            Colors.black.withOpacity(0.5),
+            secondColor,
+            Colors.grey.shade400.withOpacity(0.5),
           ],
         )),
       ),
@@ -74,7 +75,7 @@ class _MyDrawerItems extends State<MyDrawerItems>{
           CustomItems(Icons.settings,"Configurações",()=> Navigator.of(context).push(
               MaterialPageRoute(
                   builder: (context){
-                    return null;
+                    return SettingsScreen();
                   }
               )
           )),
@@ -114,9 +115,6 @@ class CustomItems extends StatelessWidget{
     return Padding(
       padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
       child: Container(
-        decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: Colors.grey.shade400))
-        ),
         child: InkWell(
           splashColor: Colors.blueAccent,
           onTap: onTap,
@@ -124,10 +122,10 @@ class CustomItems extends StatelessWidget{
             height: 40.0,
             child: Row(
               children: <Widget>[
-                Icon(icon,color: Colors.white,),
+                Icon(icon,color: firstColor),
                 Padding(
                   padding: EdgeInsets.all(8.0),
-                  child:Text(text,style: TextStyle(fontSize: 16.0,color: Colors.white),),
+                  child:Text(text,style: TextStyle(fontSize: 16.0,color: firstColor,fontWeight: FontWeight.bold),),
                 ),
               ],
             ),
