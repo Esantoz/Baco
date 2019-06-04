@@ -37,7 +37,7 @@ class _SearchIconState extends State<SearchIcon> {
   Widget build(BuildContext context) {
     return AppBar(
         iconTheme: IconThemeData(color: firstColor),
-        backgroundColor: Colors.grey.shade400.withOpacity(0.5),
+        backgroundColor: Colors.white.withOpacity(0.5),
         title: Center(
             child: _appBarTitle
         ),

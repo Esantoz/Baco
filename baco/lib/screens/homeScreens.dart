@@ -13,14 +13,12 @@ import 'eventScreen.dart';
 const Color firstColor = Color(0xff311b92);
 const Color secondColor = Color(0xffb39ddb);
 
-ThemeData appTheme = ThemeData(
-    primaryColor: Colors.white,
-    fontFamily: "Oxygen"
-);
+ThemeData appTheme =
+    ThemeData(primaryColor: Colors.white, fontFamily: "Oxygen");
 
 const TextStyle menuItemStyle = TextStyle(color: Colors.black, fontSize: 18.0);
 const TextStyle categoriasStyle =
-    TextStyle(color: firstColor, fontSize: 22.0, fontWeight: FontWeight.bold);
+    TextStyle(color: firstColor, fontSize: 25.0, fontWeight: FontWeight.bold);
 
 class HomeScreens extends StatelessWidget {
   final BaseAuth auth;
@@ -45,7 +43,7 @@ class HomeScreens extends StatelessWidget {
             scrollDirection: Axis.vertical,
             child: Column(
               children: <Widget>[
-                HomeScreenTopPart(),
+                //HomeScreenTopPart(),
                 homeScreenBottomPart,
               ],
             ),
@@ -62,19 +60,13 @@ class HomeScreens extends StatelessWidget {
         data: Theme.of(context).copyWith(
           canvasColor: Colors.grey.shade400.withOpacity(0.5),
         ),
-        child:Drawer(
+        child: Drawer(
           child: MyDrawerItems(
             auth: auth,
             onSignedOut: onSignedOut,
           ),
         ),
       ),
-
-
-
-
-
-
     );
   }
 }
@@ -91,8 +83,8 @@ class _HomeScreenTopPartState extends State<HomeScreenTopPart> {
       children: <Widget>[
         ClipRRect(
             borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(30.0),
-                bottomLeft: Radius.circular(30.0),
+              bottomRight: Radius.circular(30.0),
+              bottomLeft: Radius.circular(30.0),
             ),
             clipBehavior: Clip.hardEdge,
             child: Container(
@@ -116,26 +108,50 @@ var viewStyle = TextStyle(color: Colors.redAccent, fontSize: 15.0);
 
 var homeScreenBottomPart = Column(
   children: <Widget>[
-    Row(children: <Widget>[
+    SizedBox(
+      height: 100.0,
+    ),
+    Column(children: <Widget>[
       Padding(
-        padding: EdgeInsets.only(left: 15.0),
-        child: Text(
-          "Destaques",
-          style: categoriasStyle,
-        ),
-      ),
-      Spacer(),
-      InkWell(
-        child: Padding(
-          padding: EdgeInsets.only(top: 10.0, right: 15.0),
-          child: Text(
-            "ver todos[${destaques.length}]",
-            style: viewStyle,
+        padding: EdgeInsets.only(right: 150.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+          child: Container(
+            width: 150.0,
+            height: 40.0,
+            decoration: BoxDecoration(
+              gradient: (LinearGradient(
+                colors: [
+                  firstColor,
+                  secondColor,
+                  Colors.white,
+                  secondColor,
+                  firstColor,
+                ],
+              )),
+            ),
+            child: Text(
+              "Destaques",
+              style: categoriasStyle,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
-        onTap: () {
-          debugPrint("ver todos taped");
-        },
+      ),
+      Padding(
+        padding: const EdgeInsets.only(right: 220.0),
+        child: InkWell(
+          child: Padding(
+            padding: EdgeInsets.only(top: 10.0, right: 15.0),
+            child: Text(
+              "total[${destaques.length}]",
+              style: viewStyle,
+            ),
+          ),
+          onTap: () {
+            debugPrint("ver todos taped");
+          },
+        ),
       ),
     ]),
     SizedBox(
@@ -150,16 +166,32 @@ var homeScreenBottomPart = Column(
       ),
     ),
     SizedBox(
-      height: 25.0,
+      height: 35.0,
     ),
     Padding(
-      padding: EdgeInsets.only(left: 15.0),
-      child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            "Categorias",
-            style: categoriasStyle,
-          )),
+      padding: EdgeInsets.only(right: 150.0,bottom: 20.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+          child: Container(
+            width: 150.0,
+            height: 40.0,
+            decoration: BoxDecoration(
+              gradient: (LinearGradient(colors: [
+                firstColor,
+                secondColor,
+                Colors.white,
+                secondColor,
+                firstColor,
+              ],))
+            ),
+            child: Text(
+              "Categorias",
+              style: categoriasStyle,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      
     ),
     SizedBox(
       height: 10,
@@ -171,15 +203,15 @@ var homeScreenBottomPart = Column(
             SizedBox(
               width: 5,
             ),
-            Categorias("Esportes", "images/esportes-ingles.jpg",esportes),
+            Categorias("Esportes", "images/esportes-ingles.jpg", esportes),
             SizedBox(
               width: 10,
             ),
-            Categorias("Shows/Festas", "images/festas.jpeg",shows),
+            Categorias("Shows/Festas", "images/festas.jpeg", shows),
             SizedBox(
               width: 10,
             ),
-            Categorias("Gospel", "images/religioso.jpg",gospel),
+            Categorias("Gospel", "images/religioso.jpg", gospel),
           ],
         ),
         SizedBox(
@@ -209,17 +241,17 @@ var homeScreenBottomPart = Column(
             SizedBox(
               width: 5.0,
             ),
-            Categorias("Nerd/Geek", "images/mario.jpg",nerd),
+            Categorias("Nerd/Geek", "images/mario.jpg", nerd),
             //Text("Games\n/Geek"),
             SizedBox(
               width: 10.0,
             ),
-            Categorias("Arte/Cultura", "images/arte.jpeg",arte),
+            Categorias("Arte/Cultura", "images/arte.jpeg", arte),
             //Text("Arte\n/Cultura"),
             SizedBox(
               width: 10.0,
             ),
-            Categorias("Gratuitos/Beneficentes", "images/gratis.png",gratis),
+            Categorias("Gratuitos/Beneficentes", "images/gratis.png", gratis),
             //Text("Gratuitos\n/Beneficentes"),
           ],
         ),
@@ -250,19 +282,21 @@ var homeScreenBottomPart = Column(
             SizedBox(
               width: 5.0,
             ),
-            Categorias("Negócios", "images/negocio.jpg",negocios),
+            Categorias("Negócios", "images/negocio.jpg", negocios),
             //Text("Games\n/Geek"),
             SizedBox(
               width: 10.0,
             ),
-            Categorias("Tecnologia", "images/tec.jpeg",tecnologia),
+            Categorias("Tecnologia", "images/tec.jpeg", tecnologia),
             //Text("Arte\n/Cultura"),
             SizedBox(
               width: 10.0,
             ),
           ],
         ),
-        SizedBox(height: 5.0,),
+        SizedBox(
+          height: 5.0,
+        ),
         Row(
           children: <Widget>[
             SizedBox(
@@ -285,121 +319,116 @@ var homeScreenBottomPart = Column(
 
 //As informções abaixo são de responsabilidade do back-end
 
-List<Lotes> lotes1 = [
-  Lotes(120.20,120.30,1),
-  Lotes(130.20,130.30,2)
-];
+List<Lotes> lotes1 = [Lotes(120.20, 120.30, 1), Lotes(130.20, 130.30, 2)];
 List<Lotes> lotes2 = [
-  Lotes(120.50,120.40,1),
+  Lotes(120.50, 120.40, 1),
 ];
 List<Lotes> lotes3 = [
-  Lotes(120.60,120.30,1),
+  Lotes(120.60, 120.30, 1),
 ];
 List<Lotes> lotes4 = [
-  Lotes(120.10,120.20,1),
+  Lotes(120.10, 120.20, 1),
 ];
 
-
 List<EventCard> destaques = [
-  EventCard("images/nem.jpg", "Invsores", "ner1d",desc,lotes2,"nerd",true,15),
-  EventCard("images/branco.png", "branco","esp1d",desc,lotes4,"esportes",true),
-  EventCard("images/download.png", "O jogo da imitação", "tec1d",desc,lotes1,"tecnologia",true),
+  EventCard("images/nem.jpg", "Invsores", desc, lotes2, "nerd", true, 15),
+  EventCard("images/branco.png", "branco", desc, lotes4, "esportes", true),
+  EventCard("images/download.png", "O jogo da imitação", desc, lotes1,
+      "tecnologia", true),
 ];
 
 List<EventCard> esportes = [
-  EventCard("images/branco.png", "branco","esp1",desc,lotes4,"esportes",true),
+  EventCard("images/branco.png", "branco", desc, lotes4, "esportes", true),
 ];
 List<EventCard> shows = List();
 List<EventCard> gospel = List();
 List<EventCard> nerd = [
-  EventCard("images/nem.jpg", "Invsores", "ner1",desc,lotes2,"nerd",true,15),
-  EventCard("images/vingadores.jpg", "end game","ner2",desc,lotes3,"nerd",false),
+  EventCard("images/nem.jpg", "Invsores", desc, lotes2, "nerd", true, 15),
+  EventCard("images/vingadores.jpg", "end game", desc, lotes3, "nerd", false),
 ];
 List<EventCard> arte = List();
 List<EventCard> gratis = List();
 List<EventCard> negocios = List();
 List<EventCard> tecnologia = [
-  EventCard("images/download.png", "O jogo da imitação", "tec1",desc,lotes1,"tecnologia",true),
+  EventCard("images/download.png", "O jogo da imitação", desc, lotes1,
+      "tecnologia", true),
 ];
 
-
-
-String desc = "testetestetestetestetestetestetestetestetestetestetestetestetesteteste"
+String desc =
+    "testetestetestetestetestetestetestetestetestetestetestetestetesteteste"
     "testetestetestetestetestetestetestetestetestetestetestetestetestetestetesteteste"
     "testetestetestetestetestetestetestetestetestetestetestetestetestetestetesteteste"
     "testetestetestetestetestetestetestetestetestetestetestetestetestetestetesteteste";
 //As informações acima são de responsabilidade do back-end
 
 class EventCard extends StatelessWidget {
-  double fHeight,fWidth;
-  final String imagePath, titulo, tag,descricao,categoria;
+  double fHeight, fWidth;
+  final String imagePath, titulo, descricao, categoria;
   final int desconto;
   List<Lotes> lotes;
   bool destaque;
 
-  EventCard(this.imagePath, this.titulo, this.tag, this.descricao,this.lotes,this.categoria,this.destaque,[this.desconto]);
+  EventCard(this.imagePath, this.titulo, this.descricao, this.lotes,
+      this.categoria, this.destaque,
+      [this.desconto]);
   @override
   Widget build(BuildContext context) {
-    if(destaque == true){
+    if (destaque == true) {
       fHeight = 260.0;
       fWidth = 325.0;
-    }
-    else if(destaque == false){
+    } else if (destaque == false) {
       fHeight = 210.0;
       fWidth = 325.0;
     }
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal:9.0,vertical: 9.0),
+      padding: EdgeInsets.symmetric(horizontal: 9.0, vertical: 9.0),
       child: Material(
         elevation: 5.0,
         child: GestureDetector(
-            child:Hero(
-                tag: tag,
-                child:Stack(
-                    children: <Widget>[
-                      Container(
-                        height: fHeight,
-                        width: fWidth,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(imagePath),
-                                fit: BoxFit.fill
-                            )
-                        ),
-                      ),
-                      discont(desconto),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10,left: 265),
-                        child: MyButton(),
-                      )
-                    ]
-                )
-            ),
+            child: Hero(
+                tag: imagePath,
+                child: Stack(children: <Widget>[
+                  Container(
+                    height: fHeight,
+                    width: fWidth,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(imagePath), fit: BoxFit.fill)),
+                  ),
+                  discont(desconto),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10, left: 265),
+                    child: MyButton(),
+                  )
+                ])),
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) {
-                  if(desconto == null){return EventScreen(imagePath, tag,titulo,descricao,lotes);}
-                  else{return EventScreen(imagePath, tag,titulo,descricao,lotes,desconto);}
+                  if (desconto == null) {
+                    return EventScreen(imagePath, titulo, descricao, lotes);
+                  } else {
+                    return EventScreen(
+                        imagePath, titulo, descricao, lotes, desconto);
+                  }
                 }),
               );
-            }
-        ),
+            }),
       ),
     );
   }
-  Widget discont(int desconto){
-    if(desconto == null){
+
+  Widget discont(int desconto) {
+    if (desconto == null) {
       return Container(
         height: 0.0,
         width: 0.0,
       );
-    }
-    else{
+    } else {
       return Positioned(
         left: 270,
         bottom: 10,
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 2.0,horizontal: 6.0),
+          padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 6.0),
           decoration: BoxDecoration(
             gradient: (LinearGradient(
               colors: [
@@ -410,7 +439,10 @@ class EventCard extends StatelessWidget {
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
-          child: Text("-$desconto%",style: TextStyle(color: Colors.white,fontSize: 14.0),),
+          child: Text(
+            "-$desconto%",
+            style: TextStyle(color: Colors.white, fontSize: 14.0),
+          ),
         ),
       );
     }
@@ -420,37 +452,31 @@ class EventCard extends StatelessWidget {
 class Categorias extends StatelessWidget {
   String titulo, foto;
   List<EventCard> events;
-  Categorias(
-    this.titulo,
-    this.foto,
-    this.events
-  );
+  Categorias(this.titulo, this.foto, this.events);
 
   @override
   Widget build(BuildContext context) {
     return Material(
       elevation: 3.0,
-      child: Stack(
-          children: <Widget>[
-            Container(
-              height: 100.0,
-              width: 110.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: GestureDetector(
-                child: Image.asset(foto, fit: BoxFit.fill),
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return CategoriaScreen(titulo,events);
-                    }),
-                  );
-                },
-              ),
-            ),
-          ]
-      ),
+      child: Stack(children: <Widget>[
+        Container(
+          height: 100.0,
+          width: 110.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: GestureDetector(
+            child: Image.asset(foto, fit: BoxFit.fill),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) {
+                  return CategoriaScreen(titulo, events);
+                }),
+              );
+            },
+          ),
+        ),
+      ]),
     );
   }
 }
@@ -461,7 +487,6 @@ class MyButton extends StatefulWidget {
 }
 
 class _MyButtonState extends State<MyButton> {
-
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
@@ -487,6 +512,4 @@ class _MyButtonState extends State<MyButton> {
               onPressed: () {}))
     ]);
   }
-
 }
-

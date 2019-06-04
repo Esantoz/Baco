@@ -14,11 +14,11 @@ const Color firstColor = Color(0xff311b92);
 var bf,bm;
 
 class EventScreen extends StatefulWidget{
-  String src,tag,titulo,descricao;
+  String src,titulo,descricao;
   int desconto;
   List<Lotes> lotes;
 
-  EventScreen(this.src,this.tag,this.titulo,this.descricao,this.lotes,[this.desconto]);
+  EventScreen(this.src,this.titulo,this.descricao,this.lotes,[this.desconto]);
 
   @override
   State<StatefulWidget> createState() {
@@ -42,7 +42,7 @@ class EventScreenState extends State<EventScreen>{
               child:Align(
                 alignment: Alignment.topCenter,
                 child: Hero(
-                    tag: widget.tag,
+                    tag: widget.src,
                     child: Container(
                       height: 300,
                       width: 360,
